@@ -25,8 +25,8 @@ def main():
         ("13:50", "14:35"),
         ("14:45", "15:30"),
     ]
-    # 下校時刻だけを文字列で設定していてdatetimeオブジェクトで比較できないので冗長を許容
-    end_time = datetime.datetime.strptime("15:30", "%H:%M").strftime("%H:%M")
+
+    end_time = "15:30"
 
     while True:
         current_time = datetime.datetime.now().strftime("%H:%M")
