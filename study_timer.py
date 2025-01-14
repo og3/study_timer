@@ -1,6 +1,5 @@
 import datetime
 import time
-import sys
 
 # 現在の時限を取得する（文字列で比較する）
 def get_current_period(timetable, current_time):
@@ -32,8 +31,6 @@ def main():
         current_time = datetime.datetime.now().strftime("%H:%M")
         if current_time >= end_time:
             print("下校時間です！お疲れさまでした。(スクリプトを終了します)")
-            # スクリプトを終了
-            sys.exit()
             break
 
         period = get_current_period(timetable, current_time)
