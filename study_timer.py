@@ -49,7 +49,6 @@ def main():
         else:
             show_toast("休憩中", f"下校まであと{remaining_to_end}分です。")
 
-        # 5分間隔で実行すための待機
         time.sleep(NOTIFICATION_INTERVAL_SEC)
 
 # Pythonのスクリプトが直接実行された場合にのみ実行する
