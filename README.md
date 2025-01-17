@@ -8,6 +8,8 @@
 $ conda activate このスクリプトを実行したい環境
 # win10toastをcondaにインストールする
 $ conda install win10toast
+# 上記の用意ができたらスクリプトを保存したディレクトリで実行
+$ python study_timer.py
 ```
 ## 実行後イメージ
 ![スクリーンショット 2025-01-17 125734](https://github.com/user-attachments/assets/642bb37b-a46c-4fe4-afcf-654a4c862935)
