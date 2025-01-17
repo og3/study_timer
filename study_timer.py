@@ -4,6 +4,15 @@ from win10toast import ToastNotifier
 
 TOAST_DURATION_SEC = 5
 NOTIFICATION_INTERVAL_SEC = 300
+TIME_TABLE = [
+    ("09:30", "10:15"),
+    ("10:25", "11:10"),
+    ("11:20", "12:05"),
+    ("12:55", "13:40"),
+    ("13:50", "14:35"),
+    ("14:45", "15:30"),
+    ]
+END_TIME = "15:30"
 
 # 現在の時限を取得する（文字列で比較する）
 def get_current_period(timetable, current_time):
@@ -23,29 +32,18 @@ def show_toast(title, message, duration_sec=TOAST_DURATION_SEC):
     toaster = ToastNotifier()
     toaster.show_toast(title, message, duration=duration_sec)
 
-def main():
-    timetable = [
-        ("09:30", "10:15"),
-        ("10:25", "11:10"),
-        ("11:20", "12:05"),
-        ("12:55", "13:40"),
-        ("13:50", "14:35"),
-        ("14:45", "15:30"),
-    ]
-
-    end_time = "15:30"
-    
+def main():    
     while True:
         current_time = datetime.datetime.now().strftime("%H:%M")
-        remaining_to_end = get_remaining_minutes(current_time, end_time)
-        if current_time >= end_time:
+        remaining_to_end = get_remaining_minutes(current_time, END_TIME)
+        if current_time >= END_TIME:
             show_toast("下校時間です！", "お疲れさまでした。(スクリプトを終了します)")
             break
 
-        period = get_current_period(timetable, current_time)
+        period = get_current_period(TIME_TABLE, current_time)
 
         if period != "休憩中":
-            end = timetable[period - 1][1]
+            end = TIME_TABLE[period - 1][1]
             remaining = get_remaining_minutes(current_time, end)
             show_toast(f"現在{period}時限目です", f"授業はあと{remaining}分で終わります。\n下校まであと{remaining_to_end}分です。")
         else:
