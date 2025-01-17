@@ -49,7 +49,7 @@ def main():
             remaining = get_remaining_minutes(current_time, end)
             show_toast(f"現在{period}時限目です", f"授業はあと{remaining}分で終わります。\n下校まであと{remaining_to_end}分です。")
         else:
-           show_toast("休憩中", f"下校まであと{remaining_to_end}分です。")
+            show_toast("休憩中", f"下校まであと{remaining_to_end}分です。")
 
         # 5分間隔で実行すための待機
         time.sleep(NOTIFICATION_INTERVAL_SEC)
