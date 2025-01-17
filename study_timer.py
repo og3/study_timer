@@ -3,7 +3,7 @@ import time
 from win10toast import ToastNotifier
 
 TOAST_DURATION_SEC = 5
-INTERVAL_TIME_SEC = 300
+NOTIFICATION_INTERVAL_SEC = 300
 
 # 現在の時限を取得する（文字列で比較する）
 def get_current_period(timetable, current_time):
@@ -21,7 +21,7 @@ def get_remaining_minutes(start, end):
 
 def show_toast(title, message, duration_sec=TOAST_DURATION_SEC):
     toaster = ToastNotifier()
-    return toaster.show_toast(title, message, duration=duration_sec)
+    toaster.show_toast(title, message, duration=duration_sec)
 
 def main():
     timetable = [
@@ -52,7 +52,7 @@ def main():
            show_toast("休憩中", f"下校まであと{remaining_to_end}分です。")
 
         # 5分間隔で実行すための待機
-        time.sleep(INTERVAL_TIME_SEC)
+        time.sleep(NOTIFICATION_INTERVAL_SEC)
 
 # Pythonのスクリプトが直接実行された場合にのみ実行する
 if __name__ == "__main__":
