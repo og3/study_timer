@@ -35,12 +35,12 @@ def show_toast(title, message, duration_sec=TOAST_DURATION_SEC):
 def main():    
     while True:
         current_time = datetime.datetime.now().strftime("%H:%M")
-        remaining_to_end = get_remaining_minutes(current_time, END_TIME)
         if current_time >= END_TIME:
             show_toast("下校時間です！", "お疲れさまでした。(スクリプトを終了します)")
             break
 
         period = get_current_period(TIME_TABLE, current_time)
+        remaining_to_end = get_remaining_minutes(current_time, END_TIME)
 
         if period != "休憩中":
             end = TIME_TABLE[period - 1][1]
